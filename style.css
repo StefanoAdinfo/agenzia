@@ -1,0 +1,175 @@
+/*
+Theme Name: Agenzia
+Author: adinfo
+Author URI: 
+Theme URI: 
+Tags: full-site-editing, block-patterns
+Text Domain: Agenzia
+Requires at least: 6.4
+Requires PHP: 7.4
+Tested up to: 6.4
+Version: 100.0
+
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+.single-card-wrapper .card::after {
+  display: none !important;
+  content: "";
+}
+
+.link-hover-underline:hover {
+  text-decoration: underline !important;
+}
+.link-hover-no-underline:hover {
+  text-decoration: none !important;
+}
+
+.indice-bar {
+  height: 4px;
+  background-color: #e0e0e0;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.indice-bar-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #0066cc;
+  transition: width 0.5s ease-in-out;
+}
+
+.indice-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.indice-item {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  color: #0066cc;
+  font-size: 1.2rem;
+}
+
+.indice-item a {
+  color: #0066cc;
+}
+.indice-item a:hover {
+  color: #00264d;
+}
+
+.indice-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  height: 1.5rem;
+  width: 2px;
+  background-color: transparent;
+}
+
+.indice-item.active::before {
+  background-color: #0066cc;
+}
+
+.indice-title {
+  color: #0066cc;
+  background-color: transparent !important;
+}
+
+.accordion-button.indice-title:not(.collapsed) {
+  background-color: transparent !important;
+  color: #0066cc;
+  box-shadow: none;
+}
+
+.accordion-button.indice-title {
+  border: none;
+}
+
+.position-sticky {
+  position: sticky !important;
+  top: 0;
+  z-index: 1020;
+}
+
+/* for gallery */
+.wp-block-gallery {
+  position: relative !important;
+}
+
+.wp-block-gallery figure {
+  display: none !important;
+}
+
+.wp-block-gallery figure:first-child {
+  display: block !important;
+}
+/* model video */
+
+.thumbnail {
+  aspect-ratio: 16 / 12;
+}
+.thumbnail img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+.video-thumbnail {
+  transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.video-thumbnail img {
+  transition: transform 0.3s ease;
+  border-radius: 0.5rem;
+}
+
+/* indice */
+.border-md-end {
+  border-right: 1px solid;
+}
+@media screen and (max-width: 767px) {
+  .border-md-end {
+    border-right: none;
+  }
+}
+
+/* Search */
+.search-button:hover {
+  background-color: #00264d;
+}
+
+.search-button {
+  background-color: #00264d;
+  width: 50px;
+  height: 50px;
+}
+
+.close-btn {
+  fill: #000000; /* Cambia colore al passaggio del mouse sulla x */
+}
+
+.close-btn:hover {
+  fill: red; /* Cambia colore al passaggio del mouse sulla x */
+}
+
+.disabled {
+  cursor: not-allowed;
+  color: #797c80;
+}
+
+.clickable {
+  cursor: pointer;
+}
