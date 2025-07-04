@@ -97,7 +97,7 @@
 
 
                         <div id="a-cura-di" class="py-5">
-                            <h2 class="mb-4 h2 ">A cura di</h2>
+                            <h2 class="mb-4 h2 ">A cura di <?php the_author(); ?></h2>
 
                             <div class="card-wrapper single-card-wrapper ">
                                 <div class="card border border-primary rounded-4  ">
@@ -105,10 +105,11 @@
                                         <div class="d-flex flex-row justify-content-between align-items-start flex-wrap gap-3">
                                             <div class="card-text font-serif">
                                                 <h4 class="text-primary  mb-4">Agenzia Nolana</h4>
-                                                <p class="mb-3">Pomigliano d’Arco<br>Campania Italia</p>
-                                                <p class="mb-1"><strong>PEC:</strong> elettorale.pomigliano@asmepec.it</p>
-                                                <p class="mb-1"><strong>Telefono:</strong> 0815217158 – 0815217110</p>
-                                                <p class="mb-0"><strong>Email:</strong> antonietta.montanino@comune.pomiglianodarco.na.it</p>
+                                                <p class="mb-3">Via Trivice d’Ossa, 28<br>80030 Camposano (Na)<br>Campania Italia</p>
+                                                <p class="mb-1"><strong>PEC:</strong> agenziaareanolana@pec.it</p>
+                                                <p class="mb-1"><strong>Telefono:</strong> 0818239106</p>
+                                                <p class="mb-1"><strong>Fax:</strong> 08119143109</p>
+                                                <p class="mb-0"><strong>Email:</strong> segreteria@agenziaareanolana.it</p>
                                             </div>
                                             <div>
                                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="Logo Agenzia Nolana" class="img-fluid" style="max-height: 80px;">
