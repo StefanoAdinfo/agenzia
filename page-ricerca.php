@@ -1,8 +1,7 @@
 <?php
-/* Template Name: Pagina di Ricerca */
 get_header(); ?>
 
-<main class="search-page">
+<div class="search-page">
     <h1>Ricerca</h1>
 
     <div class="container py-5 h-100 d-flex flex-column">
@@ -67,6 +66,6 @@ get_header(); ?>
 
     <!-- Overlay per chiudere -->
     <div id="searchOverlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-none" style="z-index: 1054;"></div>
-</main>
+</div>
 
 <?php get_footer(); ?>
