@@ -9,16 +9,18 @@
         $total_posts = wp_count_posts()->publish;
         $total_pages = ceil($total_posts / $posts_per_page);
         ?>
+
+
         <h2 class="mb-3">
             Risultati per: "<?php echo esc_html(get_search_query()); ?>"
         </h2>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <?php if ($wp_query->max_num_pages != 0) : ?>
+        <?php if ($wp_query->max_num_pages != 0) : ?>
+            <div class="d-flex justify-content-between align-items-center mb-3">
                 <small>Pagina <?php echo $paged; ?> di <?php echo $wp_query->max_num_pages; ?></small>
-            <?php endif; ?>
 
-            <!-- PAGINAZIONE -->
-            <!-- <?php if ($wp_query->max_num_pages > 1) : ?>
+
+                <!-- PAGINAZIONE -->
+                <!-- <?php if ($wp_query->max_num_pages > 1) : ?>
 
                 <nav class="pagination-wrapper" aria-label="Esempio di navigazione simple mode">
                     <ul class="pagination" aria-label="Navigazione paginazione">
@@ -48,20 +50,21 @@
                 </nav>
             <?php endif; ?> -->
 
-            <div class="select-wrapper">
+                <div class="select-wrapper">
 
-                <label for="defaultSelect">Filtra</label>
-                <select id="defaultSelect">
-                    <option selected="" value="">Scegli un'opzione</option>
-                    <option value="news">News</option>
-                    <option value="rassegna-stampa">Rassegna Stampa</option>
-                    <option value="video">Video</option>
-                    <option value="foto">Foto</option>
-                    <option value="servizi">Servizi</option>
-                </select>
+                    <label for="postTypeSelect">Filtra</label>
+                    <select id="postTypeSelect" name="post_type">
+                        <option selected="" value="">Scegli un'opzione</option>
+                        <option value="news" <?php selected($_GET['post_type'] ?? '', 'news'); ?>>News</option>
+                        <option value="rassegna-stampa" <?php selected($_GET['post_type'] ?? '', 'rassegna-stampa'); ?>>Rassegna Stampa</option>
+                        <option value="video" <?php selected($_GET['post_type'] ?? '', 'video'); ?>>Video</option>
+                        <option value="foto" <?php selected($_GET['post_type'] ?? '', 'foto'); ?>>Foto</option>
+                        <option value="servizi" <?php selected($_GET['post_type'] ?? '', 'servizi'); ?>>Servizi</option>
+                    </select>
+                </div>
+
             </div>
-
-        </div>
+        <?php endif; ?>
     </div>
 
     <div class="row">
@@ -104,11 +107,8 @@
             <?php endwhile;
         else : ?>
             <div class="col-12">
-                <div class="alert alert-warning d-flex align-items-center mt-4" role="alert">
-                    <svg class="icon me-2" aria-hidden="true">
-                        <use href="<?php echo get_template_directory_uri(); ?>/path/to/bootstrap-italia/svg/sprites.svg#it-info-circle"></use>
-                    </svg>
-                    <div>
+                <div class="alert alert-warning d-flex align-items-center mt-4 " role="alert">
+                    <div class="ms-3">
                         <h4 class="alert-heading">Nessun risultato trovato</h4>
                         <p>La ricerca per <strong>"<?php echo esc_html(get_search_query()); ?>"</strong> non ha prodotto risultati.</p>
                         <hr>
@@ -160,3 +160,18 @@
 
 
 <?php get_footer(); ?>
+<script>
+    document.getElementById('postTypeSelect').addEventListener('change', function() {
+        const postType = this.value;
+        const params = new URLSearchParams(window.location.search);
+
+        if (postType) {
+            params.set('post_type', postType);
+        } else {
+            params.delete('post_type'); // Se è vuoto, rimuove il filtro
+        }
+
+        // Reindirizza alla stessa pagina con i nuovi parametri
+        window.location.search = params.toString();
+    });
+</script>
