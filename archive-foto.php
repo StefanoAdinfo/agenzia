@@ -37,18 +37,18 @@ $total_pages = $wp_query->max_num_pages;
                     <?php } ?>
                 <?php endwhile; ?>
 
+
                 <!-- Paginazione -->
-                <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center mt-4 w-100">
                     <!-- Paginazione Bootstrap Italia -->
                     <?php if ($total_pages > 1): ?>
                         <nav class="pagination-wrapper" aria-label="Esempio di navigazione simple mode">
                             <ul class="pagination" aria-label="Pagina <?php echo $current_page; ?> di <?php echo $total_pages; ?>">
                                 <li class="page-item <?php if ($current_page === 1) echo 'disabled'; ?>">
                                     <a class="page-link" href="<?php echo get_pagenum_link($current_page - 1); ?>">
-                                        <!-- <svg class="icon icon-primary">
-                                    <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
-                                </svg> -->
-                                        <span>Pagina precedente</span>
+                                        <svg class="icon icon-sm icon-primary me-1">
+                                            <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-left"></use>
+                                        </svg>
                                     </a>
                                 </li>
                                 <li class="page-item"><span class="page-link" aria-current="page"><?php echo $current_page; ?></span></li>
@@ -56,17 +56,15 @@ $total_pages = $wp_query->max_num_pages;
                                 <li class="page-item"><span class="page-link"><?php echo $total_pages; ?></span></li>
                                 <li class="page-item <?php if ($current_page >= $total_pages) echo 'disabled'; ?>">
                                     <a class="page-link" href="<?php echo get_pagenum_link($current_page + 1); ?>">
-                                        <span>Pagina successiva</span>
-                                        <!-- <svg class="icon icon-primary">
-                                    <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-right"></use>
-                                </svg> -->
+                                        <svg class="icon icon-sm icon-primary ms-1">
+                                            <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-right"></use>
+                                        </svg>
                                     </a>
                                 </li>
                             </ul>
                         </nav>
                     <?php endif; ?>
                 </div>
-
             <?php else : ?>
                 <p>Nessuna foto trovata.</p>
             <?php endif; ?>
