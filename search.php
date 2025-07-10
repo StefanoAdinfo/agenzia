@@ -49,6 +49,7 @@
             <?php endif; ?> -->
 
             <div class="select-wrapper">
+
                 <label for="defaultSelect">Filtra</label>
                 <select id="defaultSelect">
                     <option selected="" value="">Scegli un'opzione</option>
