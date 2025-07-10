@@ -14,12 +14,12 @@ if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>
                 <div class="col-12 col-lg-4">
                     <div class="card-wrapper">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title h5">
+                        <div class="it-card rounded shadow-sm border">
+                            <div class="it-card-body">
+                                <h3 class="it-card-title h5">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h3>
-                                <p class="card-text font-serif"><?php the_excerpt(); ?></p>
+                                <p class="it-card-text font-serif"><?php the_excerpt(); ?></p>
                             </div>
                         </div>
                     </div>

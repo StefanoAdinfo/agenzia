@@ -7,7 +7,7 @@ $total_pages = $wp_query->max_num_pages;
 ?>
 
 <div class="container my-5">
-    <div class="row g-4">
+    <div class="row ">
 
         <?php if (have_posts()) : while (have_posts()) : the_post();
                 $post_id = get_the_ID();
@@ -20,28 +20,48 @@ $total_pages = $wp_query->max_num_pages;
                     $youtube_id = $matches[1];
                 }
         ?>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="thumbnail">
-                        <?php if ($youtube_id): ?>
-                            <div class="video-thumbnail" data-video-id="<?php echo esc_attr($youtube_id); ?>" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                <div class="position-relative">
-                                    <img src="https://img.youtube.com/vi/<?php echo esc_attr($youtube_id); ?>/hqdefault.jpg" alt="Anteprima video" class="img-fluid rounded">
-                                    <div class="position-absolute top-50 start-50 translate-middle">
+
+                <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+                    <!--start it-card-->
+                    <article class="it-card it-card-image it-card-height-full rounded-3 shadow-sm border overflow-hidden">
+                        <!--card first child is the title (link)-->
+                        <h3 class="it-card-title ">
+                            <?php the_title(); ?>
+                        </h3>
+                        <!--card second child is the image (optional)-->
+                        <div class="it-card-image-wrapper">
+                            <?php if ($youtube_id): ?>
+                                <div class="ratio ratio-16x9 position-relative video-wrapper" data-video-id="<?php echo esc_attr($youtube_id); ?>" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                    <figure class="figure img-full video-thumbnail">
+                                        <img src="https://img.youtube.com/vi/<?php echo esc_attr($youtube_id); ?>/hqdefault.jpg" alt="Anteprima video">
+                                    </figure>
+                                    <div class="position-absolute start-50 top-50 w-100 h-100 translate-middle d-flex align-items-center justify-content-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
                                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.271 5.055A.5.5 0 0 0 5.5 5.5v5a.5.5 0 0 0 .771.424l4-2.5a.5.5 0 0 0 0-.848l-4-2.5z" />
                                         </svg>
                                     </div>
                                 </div>
-                            </div>
-                        <?php else : ?>
-                            <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/no-video.png'); ?>" alt="Nessun video disponibile" class="img-fluid rounded">
-                        <?php endif; ?>
-
-                        <div class="mt-2">
-                            <p class="fs-6"><?php echo esc_html($acf_caption); ?></p>
+                            <?php else : ?>
+                                <div class="ratio ratio-16x9" data-video-id="<?php echo esc_attr($youtube_id); ?>" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                    <figure class="figure img-full">
+                                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/no-video.png'); ?>" alt="Nessun video disponibile">
+                                    </figure>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    </div>
+                        <!--card body content-->
+                        <div class="it-card-body">
+                            <p class="it-card-text"><?php echo esc_html($acf_caption); ?></p>
+                        </div>
+                        <!--finally the card footer metadata-->
+                        <footer class="it-card-related it-card-footer">
+
+                            <time class="it-card-date" datetime="<?php echo get_the_date(); ?>"><?php echo get_the_date(); ?></time>
+                        </footer>
+                    </article>
+                    <!--end it-card-->
                 </div>
+
             <?php endwhile; ?>
 
             <!-- Modale per tutti i video -->

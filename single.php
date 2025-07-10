@@ -100,8 +100,8 @@
                             <h2 class="mb-4 h2 ">A cura di <?php the_author(); ?></h2>
 
                             <div class="card-wrapper single-card-wrapper ">
-                                <div class="card border border-primary rounded-4  ">
-                                    <div class="card-body">
+                                <div class="it-card rounded-4 border border-primary ">
+                                    <div class="it-card-body">
                                         <div class="d-flex flex-row justify-content-between align-items-start flex-wrap gap-3">
                                             <div class="card-text font-serif">
                                                 <h4 class="text-primary  mb-4">Agenzia Nolana</h4>
@@ -168,9 +168,9 @@
                         if ($related_query->have_posts()) :
                             while ($related_query->have_posts()) : $related_query->the_post(); ?>
                                 <div class="col-12 col-lg-4">
-                                    <div class="card-wrapper ">
-                                        <div class="card border border-secondary rounded-4 ">
-                                            <div class="card-body ">
+                                    <div class="card-wrapper">
+                                        <div class="it-card rounded-4 border-secondary border">
+                                            <div class="it-card-body">
                                                 <div class="head-tags d-flex justify-content-between align-items-start flex-wrap mb-4">
                                                     <div class="tags d-flex flex-wrap gap-2">
                                                         <?php $tags = get_the_tags(); ?>

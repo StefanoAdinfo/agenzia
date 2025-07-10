@@ -21,7 +21,7 @@ function register_cpt()
             'show_in_rest' => true, // Abilita l'editor a blocchi
             'rewrite' => array('slug' => 'news'),
             'supports' => array('title', 'thumbnail', 'editor', 'excerpt'),
-            'taxonomies' => array('post_tag'), // Aggiunge il supporto per i tag
+            'taxonomies' => array('category', 'post_tag'), // ✅ categorie e tag
             'menu_icon' => 'dashicons-format-aside',
         )
     );
@@ -111,7 +111,7 @@ add_action('pre_get_posts', function ($query) {
     if (!is_admin() && $query->is_main_query()) {
 
         if (is_post_type_archive(['news', 'rassegna-stampa', 'video', 'servizi', 'foto'])) {
-            $query->set('posts_per_page', 3);
+            $query->set('posts_per_page', 4);
         }
     }
 });

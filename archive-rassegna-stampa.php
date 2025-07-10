@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<h2>Archivio News</h2>
+<h2>Archivio Rassegna Stampa</h2>
 
 <?php
 
@@ -10,24 +10,25 @@ $total_pages = $wp_query->max_num_pages;
 
 if (have_posts()) : ?>
     <div class="container bg-light p-4">
-        <div class="row g-4">
+        <div class="row">
             <?php while (have_posts()) : the_post();
                 $pdf_url = get_field('pdf');
             ?>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title big-heading h5"><?php the_title(); ?></h3>
-                                <a class="read-more" href="<?php echo esc_url($pdf_url); ?>" target="_blank" rel="noopener noreferrer">
-                                    <span class="text">Leggi di più</span>
-                                    <!-- <svg class="icon icon-primary">
-                                        <use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use>
-                                    </svg> -->
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-12 col-md-6 col-lg-6 mb-3 mb-md-4">
+                    <!--start it-card-->
+                    <article class="it-card rounded-4 shadow-sm border ">
+                        <!--card first child is the title (link)-->
+                        <h3 class="it-card-title"><?php the_title(); ?></h3>
+                        <footer class="it-card-related it-card-footer">
+                            <a class="read-more" href="<?php echo esc_url($pdf_url); ?>" target="_blank" rel="noopener noreferrer">
+                                <span class="text">Leggi di più</span>
+                                <svg class="icon icon-primary">
+                                    <use href="<?php echo get_template_directory_uri() . '/assets/sprites.svg#it-arrow-right'; ?>"></use>
+                                </svg>
+                            </a>
+                        </footer>
+                    </article>
+                    <!--end it-card-->
                 </div>
             <?php endwhile; ?>
         </div>

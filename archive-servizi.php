@@ -16,10 +16,11 @@ if (have_posts()) : ?>
             <?php while (have_posts()) : the_post(); ?>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card-wrapper">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3 class="card-title big-heading h5"><?php the_title(); ?></h3>
-                                <p class="card-text font-serif"><?php the_excerpt(); ?></p>
+
+                        <div class="it-card rounded-4 shadow-sm border">
+                            <div class="it-card-body">
+                                <h3 class="it-card-title big-heading h5"><?php the_title(); ?></h3>
+                                <p class="it-card-text font-serif"><?php the_excerpt(); ?></p>
 
                                 <a class="read-more" href="<?php the_permalink(); ?>">
                                     <span class="text">Leggi di più</span>

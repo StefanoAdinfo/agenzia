@@ -1,5 +1,3 @@
-// indice
-const singleContent = document.getElementById("single-content");
 const sections = document.querySelectorAll("div[id]"); // SOLO div con id dentro #single-content
 const navLinks = document.querySelectorAll(".indice-list a");
 const bar = document.querySelector(".indice-bar-fill");

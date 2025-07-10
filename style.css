@@ -110,40 +110,17 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
   display: block !important;
 }
 /* model video */
-
-.thumbnail {
-  aspect-ratio: 16 / 12;
-}
-.thumbnail img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease;
-  border-radius: 0.5rem;
-}
-
-.video-thumbnail {
-  transition: transform 0.3s ease;
-}
-
-.video-thumbnail:hover {
+.video-wrapper {
   cursor: pointer;
+  overflow: hidden;
+}
+
+.video-wrapper .video-thumbnail {
+  transition: transform 0.4s ease;
+}
+
+.video-wrapper:hover .video-thumbnail {
   transform: scale(1.05);
-}
-
-.video-thumbnail img {
-  transition: transform 0.3s ease;
-  border-radius: 0.5rem;
-}
-
-/* indice */
-.border-md-end {
-  border-right: 1px solid;
-}
-@media screen and (max-width: 767px) {
-  .border-md-end {
-    border-right: none;
-  }
 }
 
 /* Search */
