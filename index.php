@@ -34,6 +34,9 @@
     </div> -->
 
 
+
+
+
     <form class="d-flex align-items-center mb-4 mt-2">
         <div class="me-2 flex-grow-1">
             <input type="text" name="s" class="form-control form-control-lg " placeholder="Cerca..." value="<?php echo get_search_query(); ?>" />
