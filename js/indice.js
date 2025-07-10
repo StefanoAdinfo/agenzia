@@ -1,4 +1,6 @@
-const sections = document.querySelectorAll("div[id]"); // SOLO div con id dentro #single-content
+// indice
+const singleContent = document.getElementById("single-content");
+const sections = singleContent.querySelectorAll("div[id]"); // SOLO div con id dentro #single-content
 const navLinks = document.querySelectorAll(".indice-list a");
 const bar = document.querySelector(".indice-bar-fill");
 
@@ -8,7 +10,11 @@ const setActiveLink = () => {
   let activeFound = false;
 
   sections.forEach((section) => {
+    // Restituisce un oggetto con le coordinate dell'elemento rispetto alla finestra del browser
     const rect = section.getBoundingClientRect();
+    // se la sezione dall' alto e compresa tra 0 e 100 e la sezione dal basso e compresa tra 100 o maggiore
+    // attiva la il div corrispondente
+
     if (rect.top <= 100 && rect.bottom >= 100) {
       currentId = section.id;
       activeFound = true;
@@ -47,6 +53,9 @@ const setActiveLink = () => {
 
 // Ascolta lo scroll per attivare o rimuovere la classe active
 document.addEventListener("scroll", setActiveLink, {
+  // Esso serve ad informare al browser che il addEventListener non chiamerà event.preventDefault()
   passive: true,
+  // Se non specifichi passive: true, il browser deve aspettare che il
+  // listener venga eseguito per sapere se verrà chiamato preventDefault() → possibile rallentamento.
 });
 setActiveLink(); // Imposta inizialmente la classe active

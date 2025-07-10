@@ -167,44 +167,42 @@
                         $related_query = new WP_Query($args);
                         if ($related_query->have_posts()) :
                             while ($related_query->have_posts()) : $related_query->the_post(); ?>
-                                <div class="col-12 col-lg-4">
+                                <div class="col-12 col-md-4 col-lg-4 mb-3 mb-md-4">
                                     <div class="card-wrapper">
-                                        <div class="it-card rounded-4 border-secondary border">
+
+
+                                        <!--start it-card-->
+                                        <article class="it-card rounded-4 shadow-sm border">
+
+                                            <!--card first child is the title (link)-->
+                                            <h3 class="it-card-title ">
+                                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                            </h3>
+                                            <!--card body content-->
                                             <div class="it-card-body">
-                                                <div class="head-tags d-flex justify-content-between align-items-start flex-wrap mb-4">
-                                                    <div class="tags d-flex flex-wrap gap-2">
+                                                <p class="it-card-text"><?php echo wp_trim_words(get_the_excerpt(), 30, '…'); ?></p>
+                                            </div>
+                                            <!--finally the card footer metadata-->
+
+                                            <footer class="it-card-related it-card-footer">
+                                                <div class="it-card-taxonomy">
+                                                    <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
                                                         <?php $tags = get_the_tags(); ?>
                                                         <?php if ($tags) : ?>
                                                             <?php foreach ($tags as $tag) : ?>
-                                                                <span class="badge bg-secondary"><?php echo esc_html($tag->name); ?></span>
+                                                                <li class="list-item"><a class="chip chip-simple chip-sm" href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
+                                                                        <span class="chip-label"><?php echo esc_html($tag->name); ?></span>
+                                                                    </a></li>
                                                             <?php endforeach; ?>
                                                         <?php endif; ?>
-                                                    </div>
-
-                                                    <?php if (get_the_date()) : ?>
-                                                        <div class="data text-end text-secondary small">
-                                                            <?php echo esc_html(get_the_date()); ?>
-                                                        </div>
-                                                    <?php endif; ?>
+                                                    </ul>
                                                 </div>
+                                                <time class="it-card-date" datetime="<?php echo esc_html(get_the_date()); ?>"><?php echo esc_html(get_the_date()); ?></time>
+                                            </footer>
 
-                                                <h3 class="h5 text-primary">
-                                                    <?php the_title(); ?>
-                                                </h3>
+                                        </article>
+                                        <!--end it-card-->
 
-                                                <?php if (the_excerpt()) : ?>
-                                                    <p class="card-text font-serif mb-0"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
-                                                <?php endif; ?>
-                                                <a class="read-more" href="<?php the_permalink(); ?>">
-                                                    <span class="text">Leggi di più</span>
-                                                    <!-- <svg class="icon icon-primary">
-                                                            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-arrow-right"></use>
-                                                        </svg> -->
-                                                </a>
-
-                                            </div>
-
-                                        </div>
                                     </div>
                                 </div>
                             <?php endwhile;
