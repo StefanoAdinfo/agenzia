@@ -26,15 +26,19 @@
 
                         <footer class="it-card-related it-card-footer d-flex justify-content-between align-items-center">
                             <div class="it-card-taxonomy">
-                                <?php
-                                $tags = get_the_terms(get_the_ID(), 'post_tag');
-                                if (!empty($tags) && !is_wp_error($tags)) :
-                                    $tag = $tags[0];
-                                ?>
-                                    <a href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>" class="it-card-category it-card-link link-secondary">
-                                        <span class="visually-hidden">Tag correlato: </span><?php echo esc_html($tag->name); ?>
-                                    </a>
-                                <?php endif; ?>
+                                <ul class="it-card-chips chips-list" aria-label="Argomenti correlati: ">
+                                    <?php
+                                    $tags = get_the_terms(get_the_ID(), 'post_tag');
+                                    if (!empty($tags) && !is_wp_error($tags)) :
+                                        $tag = $tags[0];
+                                    ?>
+                                        <?php foreach ($tags as $tag) : ?>
+                                            <li class="list-item"><a class="chip chip-simple chip-sm" href="<?php echo esc_url(get_tag_link($tag->term_id)); ?>">
+                                                    <span class="chip-label"><?php echo esc_html($tag->name); ?></span>
+                                                </a></li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </ul>
                             </div>
 
                             <time class="it-card-date" datetime="<?php echo get_the_date('Y-m-d'); ?>">
