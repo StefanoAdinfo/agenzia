@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-
-
 <div class="container">
 
     <div>
@@ -18,18 +16,17 @@
             <?php if ($wp_query->max_num_pages != 0) : ?>
                 <small>Pagina <?php echo $paged; ?> di <?php echo $wp_query->max_num_pages; ?></small>
             <?php endif; ?>
+
             <!-- PAGINAZIONE -->
-            <?php if ($wp_query->max_num_pages > 1) : ?>
+            <!-- <?php if ($wp_query->max_num_pages > 1) : ?>
 
                 <nav class="pagination-wrapper" aria-label="Esempio di navigazione simple mode">
                     <ul class="pagination" aria-label="Navigazione paginazione">
                         <li class="page-item <?php if ($paged <= 1) echo 'disabled'; ?>">
                             <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged - 1)); ?>" aria-label="Pagina precedente" aria-hidden="true">
-                                <!-- <svg class="icon icon-primary">
-                                        <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
-                                    </svg> -->
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="visually-hidden">Pagina precedente</span>
+                                <svg class="icon icon-sm icon-primary me-1">
+                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-left"></use>
+                                </svg>
                             </a>
                         </li>
 
@@ -42,18 +39,28 @@
 
                         <li class="page-item <?php if ($paged >= $wp_query->max_num_pages) echo 'disabled'; ?>">
                             <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged + 1)); ?>" aria-label="Pagina successiva">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="visually-hidden">Pagina successiva</span>
-                                <!-- <svg class="icon icon-primary">
-                                        <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-right"></use>
-                                    </svg> -->
+                                <svg class="icon icon-sm icon-primary ms-1">
+                                    <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-right"></use>
+                                </svg>
                             </a>
                         </li>
                     </ul>
                 </nav>
-            <?php endif; ?>
-        </div>
+            <?php endif; ?> -->
 
+            <div class="select-wrapper">
+                <label for="defaultSelect">Filtra</label>
+                <select id="defaultSelect">
+                    <option selected="" value="">Scegli un'opzione</option>
+                    <option value="news">News</option>
+                    <option value="rassegna-stampa">Rassegna Stampa</option>
+                    <option value="video">Video</option>
+                    <option value="foto">Foto</option>
+                    <option value="servizi">Servizi</option>
+                </select>
+            </div>
+
+        </div>
     </div>
 
     <div class="row">
@@ -120,11 +127,9 @@
                 <ul class="pagination" aria-label="Navigazione paginazione">
                     <li class="page-item <?php if ($paged <= 1) echo 'disabled'; ?>">
                         <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged - 1)); ?>" aria-label="Pagina precedente" aria-hidden="true">
-                            <!-- <svg class="icon icon-primary">
-                                            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-left"></use>
-                                        </svg> -->
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="visually-hidden">Pagina precedente</span>
+                            <svg class="icon icon-sm icon-primary me-1">
+                                <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-left"></use>
+                            </svg>
                         </a>
                     </li>
 
@@ -137,11 +142,9 @@
 
                     <li class="page-item <?php if ($paged >= $wp_query->max_num_pages) echo 'disabled'; ?>">
                         <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged + 1)); ?>" aria-label="Pagina successiva">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="visually-hidden">Pagina successiva</span>
-                            <!-- <svg class="icon icon-primary">
-                                            <use href="/bootstrap-italia/dist/svg/sprites.svg#it-chevron-right"></use>
-                                        </svg> -->
+                            <svg class="icon icon-sm icon-primary ms-1">
+                                <use href="<?php echo get_template_directory_uri(); ?>/assets/sprites.svg#it-chevron-right"></use>
+                            </svg>
                         </a>
                     </li>
                 </ul>

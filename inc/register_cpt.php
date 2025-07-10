@@ -110,6 +110,15 @@ add_action('init', 'register_cpt');
 add_action('pre_get_posts', function ($query) {
     if (!is_admin() && $query->is_main_query()) {
 
+        // if ($query->is_search && !is_admin() && $query->is_main_query()) {
+        //     $query->set('post_type', ['post']);
+        // }
+
+        if (is_category()) {
+            // Qui specifico tutti i CPT che voglio includere nell'archivio categoria
+            $query->set('post_type', ['post', 'news', 'rassegna-stampa', 'video', 'servizi', 'foto']);
+            $query->set('posts_per_page', 4); // o 4 come preferisci
+        }
         if (is_post_type_archive(['news', 'rassegna-stampa', 'video', 'servizi', 'foto'])) {
             $query->set('posts_per_page', 4);
         }
